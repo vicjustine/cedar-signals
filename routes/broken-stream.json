@@ -1,0 +1,5 @@
+{
+    "id": "Broken_Stream",
+    "kind": "stream",
+    "primary": { "host": "oops.cedar.internal", "port": 99999}
+}
