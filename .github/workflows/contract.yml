@@ -1,0 +1,17 @@
+name: route contract
+
+on: 
+  push: 
+    branches: [main]
+  pull_request: 
+
+jobs: 
+  validate: 
+    runs-on: ubunutu-latest
+    steps: 
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: 
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - run: python3 validate_routes.py
