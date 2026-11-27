@@ -7,7 +7,7 @@ on:
 
 jobs: 
   validate: 
-    runs-on: ubunutu-latest
+    runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
