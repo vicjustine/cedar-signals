@@ -1,0 +1,34 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://cedar.example/schemas/route.schema.json",
+    "title": "Signal route",
+    "type": "object",
+    "required": ["id", "kind", "primary"], 
+    "additionalProperties": false,
+    "properties": {
+        "id":       { "$ref": "common.schema.json#/$defs/identifier" }, 
+        "kind":     { "enum": ["stream", "batch", "webhook"] }, 
+        "primary":  { "$ref": "common.schema.json#/$defs/endpoint" }, 
+        "fallback": { "$ref": "common.schema.json#/$defs/endpoint" }, 
+        "retry":    { "$ref": "common.schema.json#/$defs/retry" }, 
+        "schedule": { "type": "string", "pattern": "^([0-9*/,-]+\\s+){4}[0-9*/,-]+$" },
+        "secretRef": {"type": "string", "minLength": 1}
+    }, 
+    "allOf": [
+        {
+            "if":   { "properties": { "kind": { "const": "batch" }  },  "required": ["kind"] },
+            "then": { "required": ["schedule"],
+                      "description": "Batch routes run on a cron schedule." }
+        },
+        {
+            "if":   { "properties": { "kind": { "const": "webhook" } }, "required": ["kind"] },
+            "then": { "required": ["secretRef", "retry"],
+                      "description": "Webhook routes must be signed and must retry." }            
+        },
+        {
+            "if":   { "properties": { "kind": { "const": "stream" } }, "required": ["kind"] },
+            "then": { "required": ["fallback"],
+                      "description": "Stream routes need a fallback endpoint." }   
+        }
+    ]
+}
