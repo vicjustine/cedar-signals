@@ -1,0 +1,6 @@
+{
+    "id": "nightly-batch",
+    "kind": "batch",
+    "primary": { "host": "batch.cedar.internal", "port": 9000 },
+    "schedule": "0 2 * * *"
+}

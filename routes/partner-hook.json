@@ -1,0 +1,7 @@
+{
+    "id": "partner-hook",
+    "kind": "webhook", 
+    "primary": { "host": "hooks.cedar.internal", "port": 443 },
+    "secretRef": "PARTNER_HMAC",
+    "retry": { "attempts": 3, "backoffMs": 500 }
+}

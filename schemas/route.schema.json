@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://cedar.example/schemas/route.schema.json",
+     "$id": "https://cedar.example/schemas/route.schema.json",
     "title": "Signal route",
     "type": "object",
     "required": ["id", "kind", "primary"], 

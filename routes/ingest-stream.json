@@ -1,0 +1,6 @@
+{
+    "id": "ingest-stream",
+    "kind": "stream",
+    "primary":  { "host": "ingest.cedar.internal", "port": 8443, "tls": true},
+    "fallback": { "host": "ingest-dr.cedar.internal", "port": 8443 }
+}
