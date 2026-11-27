@@ -1,0 +1,9 @@
+{
+    "json.validate.enable": true, 
+    "json.schemas": [
+        {
+            "fileMatch": ["/routes/*.json"],
+            "url": "./schemas/route.schema.json"
+        }
+    ]
+}
